@@ -1,0 +1,244 @@
+---
+title: "PM566_Assignment 04"
+author: Mona Bandov
+format:
+  html:
+    embed-resources: true
+editor: visual
+date: "2023-11-17"
+---
+
+# **Assignment 04 - HPC and SQL**
+
+November 17, 2022
+
+## **Due Date**
+
+This assignment is due by midnight Pacific Time, November 17th, 2023.
+
+The learning objectives are to write faster code for computational task requiring a loop and to implement some queries and basic data wrangling in SQL.
+
+## **HPC**
+
+### **Make things run faster**
+
+Rewrite the following R functions to make them faster. It is OK (and recommended) to take a look at StackOverflow and Google
+
+```{r}
+# Total row sums
+fun1 <- function(mat) {
+  n <- nrow(mat)
+  ans <- double(n) 
+  for (i in 1:n) {
+    ans[i] <- sum(mat[i, ])
+  }
+  ans
+}
+
+fun1alt <- function(mat) {
+  # YOUR CODE HERE
+  rowSums(mat)
+}
+
+# Cumulative sum by row
+fun2 <- function(mat) {
+  n <- nrow(mat)
+  k <- ncol(mat)
+  ans <- mat
+  for (i in 1:n) {
+    for (j in 2:k) {
+      ans[i,j] <- mat[i, j] + ans[i, j - 1]
+    }
+  }
+  ans
+}
+
+fun2alt <- function(mat) {
+  # YOUR CODE HERE
+  apply(mat,1,cumsum)
+}
+
+```
+
+### **Question 1**
+
+Using the dataset generated below (`dat`), check that the output of both of your new functions matches the output of the original functions. Then use `microbenchmark` to check that your version is actually faster.
+
+```{r}
+# Use the data with this code
+set.seed(2315)
+dat <- matrix(rnorm(200 * 100), nrow = 200)
+
+# Test for the first
+microbenchmark::microbenchmark(
+  fun1(dat),
+  fun1alt(dat), unit = "relative"
+)
+
+# Test for the second
+microbenchmark::microbenchmark(
+  fun2(dat),
+  fun2alt(dat), unit = "relative"
+)
+```
+
+### **Make things run faster with parallel computing**
+
+The following function allows simulating pi:
+
+```{r}
+sim_pi <- function(n = 1000, i = NULL) {
+  p <- matrix(runif(n*2), ncol = 2)
+  mean(rowSums(p^2) < 1) * 4
+}
+
+# Here is an example of the run
+set.seed(156)
+sim_pi(1000) # 3.132
+```
+
+In order to get accurate estimates, we can run this function multiple times, with the following code:
+
+```{r}
+# This runs the simulation a 4,000 times, each with 10,000 points
+set.seed(1231)
+system.time({
+  ans <- unlist(lapply(1:4000, sim_pi, n = 10000))
+  print(mean(ans))
+})
+```
+
+### **Question 2**
+
+Rewrite the previous code using `parLapply()` (or your parallelization method of choice) to parallelize it. Run the code once, using `system.time()`, to show that your version is faster.
+
+```{r}
+# YOUR CODE HERE
+system.time({
+  # YOUR CODE HERE
+  ans <- # YOUR CODE HERE
+  print(mean(ans))
+  # YOUR CODE HERE
+})
+
+
+#FIX THIS CODE HERE 
+```
+
+## **SQL**
+
+Setup a temporary database by running the following chunk
+
+```{r}
+# install.packages(c("RSQLite", "DBI"))
+
+library(RSQLite)
+library(DBI)
+
+# Initialize a temporary in memory database
+con <- dbConnect(SQLite(), ":memory:")
+
+# Download tables
+film <- read.csv("https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/film.csv")
+film_category <- read.csv("https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/film_category.csv")
+category <- read.csv("https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/category.csv")
+
+# Copy data.frames to database
+dbWriteTable(con, "film", film)
+dbWriteTable(con, "film_category", film_category)
+dbWriteTable(con, "category", category)
+
+head(film)
+head(category)
+```
+
+When you write a new chunk, remember to replace the `r` with `sql, connection=con`. Some of these questions will require you to use an inner join. Read more about them here <https://www.w3schools.com/sql/sql_join_inner.asp>
+
+## **Question 3**
+
+How many many movies are available in each `rating` category?
+
+```{r}
+
+movies_in_each_category <- dbGetQuery(con, "
+  SELECT *
+  FROM film
+  INNER JOIN film_category ON film.film_id = film_category.film_id
+")
+
+head(movies_in_each_category)
+```
+
+## **Question 4**
+
+What is the average replacement cost and rental rate for each `rating` category?
+
+```{r}
+
+avg_replacement <- dbGetQuery(con, "
+  SELECT
+    rating,
+    AVG(replacement_cost) AS avg_replacement_cost,
+    AVG(rental_rate) AS avg_rental_rate
+  FROM
+    film
+  GROUP BY
+    rating
+")
+head(avg_replacement)
+
+
+```
+
+## **Question 5**
+
+Use table `film_category` together with `film` to find how many films there are with each category ID.
+
+```{r}
+
+film_in_each_category <- dbGetQuery(con, "
+  SELECT
+    fc.category_id,
+    COUNT(f.film_id) AS film_count
+  FROM
+    film_category fc
+  INNER JOIN
+    film f ON fc.film_id = f.film_id
+  GROUP BY
+    fc.category_id
+")
+head(film_in_each_category)
+
+
+```
+
+## **Question 6**
+
+Incorporate the `category` table into the answer to the previous question to find the name of the most popular category.
+
+```{r}
+
+
+most_popular_category <- dbGetQuery(con, "
+  SELECT
+    c.category_id,
+    c.name AS category_name,
+    COUNT(f.film_id) AS film_count
+  FROM
+    film_category fc
+  INNER JOIN
+    film f ON fc.film_id = f.film_id
+  INNER JOIN
+    category c ON fc.category_id = c.category_id
+  GROUP BY
+    c.category_id, c.name
+  ORDER BY
+    film_count DESC
+  LIMIT 1
+")
+
+head(most_popular_category)
+
+
+
+```
