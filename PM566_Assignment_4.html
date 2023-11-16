@@ -3077,27 +3077,25 @@ vertical-align: -.125em;
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>fun1alt <span class="ot">&lt;-</span> <span class="cf">function</span>(mat) {</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="co"># YOUR CODE HERE</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(mat)</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Cumulative sum by row</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>fun2 <span class="ot">&lt;-</span> <span class="cf">function</span>(mat) {</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(mat)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">ncol</span>(mat)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  ans <span class="ot">&lt;-</span> mat</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>k) {</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      ans[i,j] <span class="ot">&lt;-</span> mat[i, j] <span class="sc">+</span> ans[i, j <span class="sc">-</span> <span class="dv">1</span>]</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>  ans</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>fun2alt <span class="ot">&lt;-</span> <span class="cf">function</span>(mat) {</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  <span class="co"># YOUR CODE HERE</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">apply</span>(mat,<span class="dv">1</span>,cumsum)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowSums</span>(mat)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Cumulative sum by row</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>fun2 <span class="ot">&lt;-</span> <span class="cf">function</span>(mat) {</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(mat)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  k <span class="ot">&lt;-</span> <span class="fu">ncol</span>(mat)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  ans <span class="ot">&lt;-</span> mat</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n) {</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>k) {</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>      ans[i,j] <span class="ot">&lt;-</span> mat[i, j] <span class="sc">+</span> ans[i, j <span class="sc">-</span> <span class="dv">1</span>]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  ans</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>fun2alt <span class="ot">&lt;-</span> <span class="cf">function</span>(mat) {</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">apply</span>(mat, <span class="dv">1</span>, cumsum))</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="question-1" class="level3">
@@ -3120,9 +3118,9 @@ overflows</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: relative
-         expr     min       lq    mean   median       uq     max neval cld
-    fun1(dat) 33.7395 32.46457 19.4207 31.56015 31.44727 4.70916   100  a 
- fun1alt(dat)  1.0000  1.00000  1.0000  1.00000  1.00000 1.00000   100   b</code></pre>
+         expr      min       lq     mean   median       uq      max neval cld
+    fun1(dat) 34.00826 32.55172 18.42947 31.51087 30.18983 4.635055   100  a 
+ fun1alt(dat)  1.00000  1.00000  1.00000  1.00000  1.00000 1.000000   100   b</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test for the second</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>microbenchmark<span class="sc">::</span><span class="fu">microbenchmark</span>(</span>
@@ -3132,8 +3130,15 @@ overflows</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Unit: relative
          expr      min       lq     mean   median       uq       max neval cld
-    fun2(dat) 4.840055 4.364804 3.078958 4.179646 4.017187 0.5922309   100  a 
+    fun2(dat) 4.414428 3.784247 2.864125 3.727249 3.602831 0.6424232   100  a 
  fun2alt(dat) 1.000000 1.000000 1.000000 1.000000 1.000000 1.0000000   100   b</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Check to see if they are the same</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>results_fun1 <span class="ot">&lt;-</span> <span class="fu">identical</span>(fun1, fun1alt)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>results_fun2 <span class="ot">&lt;-</span> <span class="fu">identical</span>(fun2, fun2alt)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>results_fun1 <span class="sc">==</span>results_fun2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
 </div>
 </div>
 </section>
@@ -3141,32 +3146,32 @@ overflows</code></pre>
 <h3 class="anchored" data-anchor-id="make-things-run-faster-with-parallel-computing"><strong>Make things run faster with parallel computing</strong></h3>
 <p>The following function allows simulating pi:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sim_pi <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">i =</span> <span class="cn">NULL</span>) {</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n<span class="sc">*</span><span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">rowSums</span>(p<span class="sc">^</span><span class="dv">2</span>) <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">4</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is an example of the run</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">156</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_pi</span>(<span class="dv">1000</span>) <span class="co"># 3.132</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>sim_pi <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">n =</span> <span class="dv">1000</span>, <span class="at">i =</span> <span class="cn">NULL</span>) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  p <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">runif</span>(n<span class="sc">*</span><span class="dv">2</span>), <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(<span class="fu">rowSums</span>(p<span class="sc">^</span><span class="dv">2</span>) <span class="sc">&lt;</span> <span class="dv">1</span>) <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is an example of the run</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">156</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">sim_pi</span>(<span class="dv">1000</span>) <span class="co"># 3.132</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.132</code></pre>
 </div>
 </div>
 <p>In order to get accurate estimates, we can run this function multiple times, with the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This runs the simulation a 4,000 times, each with 10,000 points</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1231</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>({</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  ans <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4000</span>, sim_pi, <span class="at">n =</span> <span class="dv">10000</span>))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">mean</span>(ans))</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This runs the simulation a 4,000 times, each with 10,000 points</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1231</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>({</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  ans <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4000</span>, sim_pi, <span class="at">n =</span> <span class="dv">10000</span>))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">mean</span>(ans))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.14124</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-  0.701   0.120   0.821 </code></pre>
+  0.705   0.148   0.865 </code></pre>
 </div>
 </div>
 </section>
@@ -3174,21 +3179,24 @@ overflows</code></pre>
 <h3 class="anchored" data-anchor-id="question-2"><strong>Question 2</strong></h3>
 <p>Rewrite the previous code using <code>parLapply()</code> (or your parallelization method of choice) to parallelize it. Run the code once, using <code>system.time()</code>, to show that your version is faster.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># YOUR CODE HERE</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>({</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># YOUR CODE HERE</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  ans <span class="ot">&lt;-</span> <span class="co"># YOUR CODE HERE</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">mean</span>(ans))</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="co"># YOUR CODE HERE</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(parallel)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>sim_pi_parallel <span class="ot">&lt;-</span> <span class="cf">function</span>(<span class="at">reps =</span> <span class="dv">4000</span>, <span class="at">points =</span> <span class="dv">10000</span>) {</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  final <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">mclapply</span>(<span class="dv">1</span><span class="sc">:</span>reps, <span class="cf">function</span>(i) <span class="fu">sim_pi</span>(<span class="at">n =</span> points), <span class="at">mc.cores =</span> <span class="fu">detectCores</span>()))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(final)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>({</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  final <span class="ot">&lt;-</span> <span class="fu">sim_pi_parallel</span>()</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  avg<span class="ot">=</span><span class="fu">mean</span>(final)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(avg)</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.14124</code></pre>
+<pre><code>[1] 3.141723</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   user  system elapsed 
-      0       0       0 </code></pre>
+  0.986   0.395   0.347 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co">#FIX THIS CODE HERE </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -3196,79 +3204,23 @@ overflows</code></pre>
 <h2 class="anchored" data-anchor-id="sql"><strong>SQL</strong></h2>
 <p>Setup a temporary database by running the following chunk</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c(&quot;RSQLite&quot;, &quot;DBI&quot;))</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a temporary in memory database</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Download tables</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/film.csv&quot;</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>film_category <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/film_category.csv&quot;</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>category <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/category.csv&quot;</span>)</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy data.frames to database</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;film&quot;</span>, film)</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;film_category&quot;</span>, film_category)</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;category&quot;</span>, category)</span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(film)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  film_id            title
-1       1 ACADEMY DINOSAUR
-2       2   ACE GOLDFINGER
-3       3 ADAPTATION HOLES
-4       4 AFFAIR PREJUDICE
-5       5      AFRICAN EGG
-6       6     AGENT TRUMAN
-                                                                                                            description
-1                     An Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies
-2                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China
-3                      A Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Baloon Factory
-4                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank
-5 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico
-6                             A Intrepid Panorama of a Robot And a Boy who must Escape a Sumo Wrestler in Ancient China
-  release_year language_id original_language_id rental_duration rental_rate
-1         2006           1                   NA               6        0.99
-2         2006           1                   NA               3        4.99
-3         2006           1                   NA               7        2.99
-4         2006           1                   NA               5        2.99
-5         2006           1                   NA               6        2.99
-6         2006           1                   NA               3        2.99
-  length replacement_cost rating                last_update
-1     86            20.99     PG 2007-09-10 17:46:03.905795
-2     48            12.99      G 2007-09-10 17:46:03.905795
-3     50            18.99  NC-17 2007-09-10 17:46:03.905795
-4    117            26.99      G 2007-09-10 17:46:03.905795
-5    130            22.99      G 2007-09-10 17:46:03.905795
-6    169            17.99     PG 2007-09-10 17:46:03.905795
-                        special_features
-1 {&quot;Deleted Scenes&quot;,&quot;Behind the Scenes&quot;}
-2            {Trailers,&quot;Deleted Scenes&quot;}
-3            {Trailers,&quot;Deleted Scenes&quot;}
-4     {Commentaries,&quot;Behind the Scenes&quot;}
-5                     {&quot;Deleted Scenes&quot;}
-6                     {&quot;Deleted Scenes&quot;}
-                                                                                                                                                                        fulltext
-1                                    &#39;academi&#39;:1 &#39;battl&#39;:15 &#39;canadian&#39;:20 &#39;dinosaur&#39;:2 &#39;drama&#39;:5 &#39;epic&#39;:4 &#39;feminist&#39;:8 &#39;mad&#39;:11 &#39;must&#39;:14 &#39;rocki&#39;:21 &#39;scientist&#39;:12 &#39;teacher&#39;:17
-2                                         &#39;ace&#39;:1 &#39;administr&#39;:9 &#39;ancient&#39;:19 &#39;astound&#39;:4 &#39;car&#39;:17 &#39;china&#39;:20 &#39;databas&#39;:8 &#39;epistl&#39;:5 &#39;explor&#39;:12 &#39;find&#39;:15 &#39;goldfing&#39;:2 &#39;must&#39;:14
-3                                                             &#39;adapt&#39;:1 &#39;astound&#39;:4 &#39;baloon&#39;:19 &#39;car&#39;:11 &#39;factori&#39;:20 &#39;hole&#39;:2 &#39;lumberjack&#39;:8,16 &#39;must&#39;:13 &#39;reflect&#39;:5 &#39;sink&#39;:14
-4                                             &#39;affair&#39;:1 &#39;chase&#39;:14 &#39;documentari&#39;:5 &#39;fanci&#39;:4 &#39;frisbe&#39;:8 &#39;lumberjack&#39;:11 &#39;monkey&#39;:16 &#39;must&#39;:13 &#39;prejudic&#39;:2 &#39;shark&#39;:19 &#39;tank&#39;:20
-5 &#39;african&#39;:1 &#39;chef&#39;:11 &#39;dentist&#39;:14 &#39;documentari&#39;:7 &#39;egg&#39;:2 &#39;fast&#39;:5 &#39;fast-pac&#39;:4 &#39;forens&#39;:19 &#39;gulf&#39;:23 &#39;mexico&#39;:25 &#39;must&#39;:16 &#39;pace&#39;:6 &#39;pastri&#39;:10 &#39;psychologist&#39;:20 &#39;pursu&#39;:17
-6                                         &#39;agent&#39;:1 &#39;ancient&#39;:19 &#39;boy&#39;:11 &#39;china&#39;:20 &#39;escap&#39;:14 &#39;intrepid&#39;:4 &#39;must&#39;:13 &#39;panorama&#39;:5 &#39;robot&#39;:8 &#39;sumo&#39;:16 &#39;truman&#39;:2 &#39;wrestler&#39;:17</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  category_id        name         last_update
-1           1      Action 2006-02-15 09:46:27
-2           2   Animation 2006-02-15 09:46:27
-3           3    Children 2006-02-15 09:46:27
-4           4    Classics 2006-02-15 09:46:27
-5           5      Comedy 2006-02-15 09:46:27
-6           6 Documentary 2006-02-15 09:46:27</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c(&quot;RSQLite&quot;, &quot;DBI&quot;))</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a temporary in memory database</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">SQLite</span>(), <span class="st">&quot;:memory:&quot;</span>)</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Download tables</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/film.csv&quot;</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>film_category <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/film_category.csv&quot;</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>category <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/ivanceras/sakila/master/csv-sakila-db/category.csv&quot;</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy data.frames to database</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;film&quot;</span>, film)</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;film_category&quot;</span>, film_category)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(con, <span class="st">&quot;category&quot;</span>, category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>When you write a new chunk, remember to replace the <code>r</code> with <code>sql, connection=con</code>. Some of these questions will require you to use an inner join. Read more about them here <a href="https://www.w3schools.com/sql/sql_join_inner.asp" class="uri">https://www.w3schools.com/sql/sql_join_inner.asp</a></p>
 </section>
@@ -3276,63 +3228,18 @@ overflows</code></pre>
 <h2 class="anchored" data-anchor-id="question-3"><strong>Question 3</strong></h2>
 <p>How many many movies are available in each <code>rating</code> category?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>movies_in_each_category <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT *</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM film</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">  INNER JOIN film_category ON film.film_id = film_category.film_id</span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(movies_in_each_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>movies_in_each_category <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;SELECT rating, COUNT(*) AS Movie_Count</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="st">FROM film</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY rating&quot;</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>(movies_in_each_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  film_id            title
-1       1 ACADEMY DINOSAUR
-2       2   ACE GOLDFINGER
-3       3 ADAPTATION HOLES
-4       4 AFFAIR PREJUDICE
-5       5      AFRICAN EGG
-6       6     AGENT TRUMAN
-                                                                                                            description
-1                     An Epic Drama of a Feminist And a Mad Scientist who must Battle a Teacher in The Canadian Rockies
-2                  A Astounding Epistle of a Database Administrator And a Explorer who must Find a Car in Ancient China
-3                      A Astounding Reflection of a Lumberjack And a Car who must Sink a Lumberjack in A Baloon Factory
-4                          A Fanciful Documentary of a Frisbee And a Lumberjack who must Chase a Monkey in A Shark Tank
-5 A Fast-Paced Documentary of a Pastry Chef And a Dentist who must Pursue a Forensic Psychologist in The Gulf of Mexico
-6                             A Intrepid Panorama of a Robot And a Boy who must Escape a Sumo Wrestler in Ancient China
-  release_year language_id original_language_id rental_duration rental_rate
-1         2006           1                   NA               6        0.99
-2         2006           1                   NA               3        4.99
-3         2006           1                   NA               7        2.99
-4         2006           1                   NA               5        2.99
-5         2006           1                   NA               6        2.99
-6         2006           1                   NA               3        2.99
-  length replacement_cost rating                last_update
-1     86            20.99     PG 2007-09-10 17:46:03.905795
-2     48            12.99      G 2007-09-10 17:46:03.905795
-3     50            18.99  NC-17 2007-09-10 17:46:03.905795
-4    117            26.99      G 2007-09-10 17:46:03.905795
-5    130            22.99      G 2007-09-10 17:46:03.905795
-6    169            17.99     PG 2007-09-10 17:46:03.905795
-                        special_features
-1 {&quot;Deleted Scenes&quot;,&quot;Behind the Scenes&quot;}
-2            {Trailers,&quot;Deleted Scenes&quot;}
-3            {Trailers,&quot;Deleted Scenes&quot;}
-4     {Commentaries,&quot;Behind the Scenes&quot;}
-5                     {&quot;Deleted Scenes&quot;}
-6                     {&quot;Deleted Scenes&quot;}
-                                                                                                                                                                        fulltext
-1                                    &#39;academi&#39;:1 &#39;battl&#39;:15 &#39;canadian&#39;:20 &#39;dinosaur&#39;:2 &#39;drama&#39;:5 &#39;epic&#39;:4 &#39;feminist&#39;:8 &#39;mad&#39;:11 &#39;must&#39;:14 &#39;rocki&#39;:21 &#39;scientist&#39;:12 &#39;teacher&#39;:17
-2                                         &#39;ace&#39;:1 &#39;administr&#39;:9 &#39;ancient&#39;:19 &#39;astound&#39;:4 &#39;car&#39;:17 &#39;china&#39;:20 &#39;databas&#39;:8 &#39;epistl&#39;:5 &#39;explor&#39;:12 &#39;find&#39;:15 &#39;goldfing&#39;:2 &#39;must&#39;:14
-3                                                             &#39;adapt&#39;:1 &#39;astound&#39;:4 &#39;baloon&#39;:19 &#39;car&#39;:11 &#39;factori&#39;:20 &#39;hole&#39;:2 &#39;lumberjack&#39;:8,16 &#39;must&#39;:13 &#39;reflect&#39;:5 &#39;sink&#39;:14
-4                                             &#39;affair&#39;:1 &#39;chase&#39;:14 &#39;documentari&#39;:5 &#39;fanci&#39;:4 &#39;frisbe&#39;:8 &#39;lumberjack&#39;:11 &#39;monkey&#39;:16 &#39;must&#39;:13 &#39;prejudic&#39;:2 &#39;shark&#39;:19 &#39;tank&#39;:20
-5 &#39;african&#39;:1 &#39;chef&#39;:11 &#39;dentist&#39;:14 &#39;documentari&#39;:7 &#39;egg&#39;:2 &#39;fast&#39;:5 &#39;fast-pac&#39;:4 &#39;forens&#39;:19 &#39;gulf&#39;:23 &#39;mexico&#39;:25 &#39;must&#39;:16 &#39;pace&#39;:6 &#39;pastri&#39;:10 &#39;psychologist&#39;:20 &#39;pursu&#39;:17
-6                                         &#39;agent&#39;:1 &#39;ancient&#39;:19 &#39;boy&#39;:11 &#39;china&#39;:20 &#39;escap&#39;:14 &#39;intrepid&#39;:4 &#39;must&#39;:13 &#39;panorama&#39;:5 &#39;robot&#39;:8 &#39;sumo&#39;:16 &#39;truman&#39;:2 &#39;wrestler&#39;:17
-  film_id category_id         last_update
-1       1           6 2006-02-15 10:07:09
-2       2          11 2006-02-15 10:07:09
-3       3           6 2006-02-15 10:07:09
-4       4          11 2006-02-15 10:07:09
-5       5           8 2006-02-15 10:07:09
-6       6           9 2006-02-15 10:07:09</code></pre>
+<pre><code>  rating Movie_Count
+1      G         180
+2  NC-17         210
+3     PG         194
+4  PG-13         223
+5      R         195</code></pre>
 </div>
 </div>
 </section>
@@ -3340,17 +3247,19 @@ overflows</code></pre>
 <h2 class="anchored" data-anchor-id="question-4"><strong>Question 4</strong></h2>
 <p>What is the average replacement cost and rental rate for each <code>rating</code> category?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>avg_replacement <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="st">    rating,</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(replacement_cost) AS avg_replacement_cost,</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(rental_rate) AS avg_rental_rate</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">    film</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="st">    rating</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(avg_replacement)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>avg_replacement <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="st">    rating,</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(replacement_cost) AS avg_replacement_cost,</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="st">    AVG(rental_rate) AS avg_rental_rate</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="st">    film</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="st">    rating</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>avg_replacement</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  rating avg_replacement_cost avg_rental_rate
 1      G             20.12333        2.912222
@@ -3365,26 +3274,36 @@ overflows</code></pre>
 <h2 class="anchored" data-anchor-id="question-5"><strong>Question 5</strong></h2>
 <p>Use table <code>film_category</code> together with <code>film</code> to find how many films there are with each category ID.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>film_in_each_category <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">    fc.category_id,</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(f.film_id) AS film_count</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="st">    film_category fc</span></span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="st">  INNER JOIN</span></span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="st">    film f ON fc.film_id = f.film_id</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY</span></span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="st">    fc.category_id</span></span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(film_in_each_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>film_in_each_category <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="st">    fc.category_id,</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(f.film_id) AS film_count</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">    film_category fc</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">  INNER JOIN</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="st">    film f ON fc.film_id = f.film_id</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY</span></span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">    fc.category_id</span></span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>film_in_each_category</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  category_id film_count
-1           1         64
-2           2         66
-3           3         60
-4           4         57
-5           5         58
-6           6         68</code></pre>
+<pre><code>   category_id film_count
+1            1         64
+2            2         66
+3            3         60
+4            4         57
+5            5         58
+6            6         68
+7            7         62
+8            8         69
+9            9         73
+10          10         61
+11          11         56
+12          12         51
+13          13         63
+14          14         61
+15          15         74
+16          16         57</code></pre>
 </div>
 </div>
 </section>
@@ -3392,29 +3311,33 @@ overflows</code></pre>
 <h2 class="anchored" data-anchor-id="question-6"><strong>Question 6</strong></h2>
 <p>Incorporate the <code>category</code> table into the answer to the previous question to find the name of the most popular category.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>most_popular_category <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="st">    c.category_id,</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="st">    c.name AS category_name,</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(f.film_id) AS film_count</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a><span class="st">    film_category fc</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="st">  INNER JOIN</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a><span class="st">    film f ON fc.film_id = f.film_id</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="st">  INNER JOIN</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="st">    category c ON fc.category_id = c.category_id</span></span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="st">    c.category_id, c.name</span></span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY</span></span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="st">    film_count DESC</span></span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a><span class="st">  LIMIT 1</span></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(most_popular_category)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>most_popular_category <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(con, <span class="st">&quot;</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">    c.category_id,</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="st">    c.name AS category_name,</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="st">    COUNT(f.film_id) AS film_count</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="st">    film_category fc</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="st">  INNER JOIN</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="st">    film f ON fc.film_id = f.film_id</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a><span class="st">  INNER JOIN</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="st">    category c ON fc.category_id = c.category_id</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="st">    c.category_id, c.name</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="st">    film_count DESC</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a><span class="st">  LIMIT 1</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a><span class="st">&quot;</span>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>most_popular_category</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  category_id category_name film_count
 1          15        Sports         74</code></pre>
 </div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean up</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>

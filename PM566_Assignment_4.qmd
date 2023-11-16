@@ -36,7 +36,6 @@ fun1 <- function(mat) {
 }
 
 fun1alt <- function(mat) {
-  # YOUR CODE HERE
   rowSums(mat)
 }
 
@@ -54,8 +53,7 @@ fun2 <- function(mat) {
 }
 
 fun2alt <- function(mat) {
-  # YOUR CODE HERE
-  apply(mat,1,cumsum)
+t(apply(mat, 1, cumsum))
 }
 
 ```
@@ -75,11 +73,18 @@ microbenchmark::microbenchmark(
   fun1alt(dat), unit = "relative"
 )
 
+
 # Test for the second
 microbenchmark::microbenchmark(
   fun2(dat),
   fun2alt(dat), unit = "relative"
 )
+
+
+#Check to see if they are the same
+results_fun1 <- identical(fun1, fun1alt)
+results_fun2 <- identical(fun2, fun2alt)
+results_fun1 ==results_fun2
 ```
 
 ### **Make things run faster with parallel computing**
@@ -113,16 +118,18 @@ system.time({
 Rewrite the previous code using `parLapply()` (or your parallelization method of choice) to parallelize it. Run the code once, using `system.time()`, to show that your version is faster.
 
 ```{r}
-# YOUR CODE HERE
+
+library(parallel)
+sim_pi_parallel <- function(reps = 4000, points = 10000) {
+  final <- unlist(mclapply(1:reps, function(i) sim_pi(n = points), mc.cores = detectCores()))
+  return(final)
+}
+
 system.time({
-  # YOUR CODE HERE
-  ans <- # YOUR CODE HERE
-  print(mean(ans))
-  # YOUR CODE HERE
+  final <- sim_pi_parallel()
+  avg=mean(final)
+  print(avg)
 })
-
-
-#FIX THIS CODE HERE 
 ```
 
 ## **SQL**
@@ -148,8 +155,6 @@ dbWriteTable(con, "film", film)
 dbWriteTable(con, "film_category", film_category)
 dbWriteTable(con, "category", category)
 
-head(film)
-head(category)
 ```
 
 When you write a new chunk, remember to replace the `r` with `sql, connection=con`. Some of these questions will require you to use an inner join. Read more about them here <https://www.w3schools.com/sql/sql_join_inner.asp>
@@ -160,13 +165,11 @@ How many many movies are available in each `rating` category?
 
 ```{r}
 
-movies_in_each_category <- dbGetQuery(con, "
-  SELECT *
-  FROM film
-  INNER JOIN film_category ON film.film_id = film_category.film_id
-")
+movies_in_each_category <- dbGetQuery(con, "SELECT rating, COUNT(*) AS Movie_Count
+FROM film
+GROUP BY rating")
 
-head(movies_in_each_category)
+(movies_in_each_category)
 ```
 
 ## **Question 4**
@@ -185,9 +188,9 @@ avg_replacement <- dbGetQuery(con, "
   GROUP BY
     rating
 ")
-head(avg_replacement)
 
 
+avg_replacement
 ```
 
 ## **Question 5**
@@ -207,7 +210,7 @@ film_in_each_category <- dbGetQuery(con, "
   GROUP BY
     fc.category_id
 ")
-head(film_in_each_category)
+film_in_each_category
 
 
 ```
@@ -237,8 +240,15 @@ most_popular_category <- dbGetQuery(con, "
   LIMIT 1
 ")
 
-head(most_popular_category)
+most_popular_category
 
 
+
+```
+
+```{r}
+
+# clean up
+dbDisconnect(con)
 
 ```
